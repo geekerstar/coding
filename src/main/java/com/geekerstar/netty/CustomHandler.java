@@ -16,8 +16,9 @@ import io.netty.util.CharsetUtil;
 
 /**
  * @Description: 创建自定义助手类
+ *
+ * SimpleChannelInboundHandler: 对于请求来讲，其实相当于[入站，入境]
  */
-// SimpleChannelInboundHandler: 对于请求来讲，其实相当于[入站，入境]
 public class CustomHandler extends SimpleChannelInboundHandler<HttpObject> {
 
 	@Override
