@@ -15,7 +15,8 @@ public class SortMethods {
 //        insertSort(a);
 //        insertSort2(a);
 //        shellSort(a);
-        quickSort(a);
+//        quickSort(a);
+//        mergeSort(a);
         Print(a);
     }
 
@@ -275,5 +276,69 @@ public class SortMethods {
         }
         swap(a, p, j);
         return j;
+    }
+
+
+    /**
+     * 归并排序
+     *
+     * 归并——将两个或两个以上的有序表组合成一个新的有序表。
+     * 算法描述：
+     * 1）假设初始序列含有 n 个记录，则可看成 n 个有序的子序列，每个子序列长度为1。
+     * 2）两两合并，得到 n/2 个长度为2或1的有序子序列。
+     * 3）再两两合并，……如此重复，直至得到一个长度为n的有序序列为止。
+     *
+     * 算法分析：
+     * 合并排序法主要是将两个已经排好序的资料合并和进行排序。如果所读入的资料尚未排序，可以先利用其它的排序方式来处理这两笔资料，然后再将排序好的这两笔资料合并。
+     * 算法评价：
+     * 时间复杂度：T(n)=O(nlogn)
+     * 空间复杂度：S(n)=O(n)
+     *
+     *
+     * @param a
+     * @param left
+     * @param right
+     */
+    private static void mergeSort(int[] a, int left, int right){
+        if (left<right) {
+            //1）先分解
+            //把整个数组分解成[left,mid][mid+1,right]——mid=(left+right)/2
+            int mid = (left+right)/2;
+            mergeSort(a, left, mid);
+            mergeSort(a, mid+1, right);
+
+            //2)在归并
+            int[] b = new int[a.length];
+            merge(a,b, left,mid, right);
+            //把辅助序列b中的数据拷贝到a中
+            copy(a,b,left,right);
+        }
+    }
+    private static void merge(int[] a, int[] b, int left,int mid, int right){
+        int p = left;
+        int r = mid+1;
+        int k = left;
+        while (p<=mid&&r<=right) {
+            if (a[p]<a[r]) {
+                b[k]=a[p++];
+            }else {
+                b[k]=a[r++];
+            }
+            k++;
+        }
+        if (p>mid) {
+            for(int i=r;i<=right;i++){
+                b[k++]=a[i];
+            }
+        }else{
+            for(int i=p;i<=mid;i++){
+                b[k++]=a[i];
+            }
+        }
+    }
+    private static void copy(int[] a, int[] b, int left, int right){
+        for(int i=left;i<=right;i++){
+            a[i]=b[i];
+        }
     }
 }
