@@ -94,6 +94,7 @@ public class SortMethods {
             for (int j = i + 1; j < a.length; j++) {
                 if (a[j] < a[k]) {
                     k = j;
+                    swap(a,j,i);
                 }
             }
             if (k != i) {
