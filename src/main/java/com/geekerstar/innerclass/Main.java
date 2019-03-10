@@ -1,4 +1,4 @@
-package com.geekerstar.staticclass;
+package com.geekerstar.innerclass;
 
 /**
  * @author geekerstar

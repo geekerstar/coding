@@ -1,4 +1,4 @@
-package com.geekerstar.staticclass;
+package com.geekerstar.innerclass;
 
 /**
  * @author geekerstar
@@ -35,5 +35,14 @@ public class OuterClass {
         }
     }
 
+
+    /**
+     * 局部内部类:在外部类的方法中定义的类。其作用范围是所在的方法内，不能被public、private、protected修饰，它只能访问方法中定义为final类型的局部变量
+     */
+    public void f(){
+        class innerClass{
+
+        }
+    }
 
 }
